@@ -11,7 +11,7 @@ class UIRenderer implements MusicRenderer {
     }
   }
 
-  void renderWindowCurve() {
+  private void renderWindowCurve() {
       int windowX = 100;
       int windowY = height-20;
       int windowHeight = 80;
@@ -29,7 +29,7 @@ class UIRenderer implements MusicRenderer {
       noStroke();
   }
   
-  void renderFFT() {  
+  private void renderFFT() {  
       noStroke();
   
       int keyHeight = height / (keyboardEnd - keyboardStart);
@@ -69,7 +69,7 @@ class UIRenderer implements MusicRenderer {
       noStroke();
   }
 
-  void renderPeaks() {
+  private void renderPeaks() {
       int keyHeight = height / (keyboardEnd - keyboardStart);
   
       // render detected peaks
