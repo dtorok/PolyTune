@@ -108,7 +108,8 @@ public static final int HARMONIC = 3;
 public static final int SLOPEUP = 4;
 public static final int SLOPEDOWN = 5;
 
-ArrayList<GuitarBar> midibars; 
+ArrayList<GuitarBar> midibars;
+Demo demo;
 
 //boolean sketchFullScreen() {
 //    return runFullscreen;
@@ -130,7 +131,8 @@ void setup() {
     initGui();
 
     midibars= new ArrayList<GuitarBar>();
-    
+    demo = new Demo();
+
     musicRenderers = new Vector<MusicRenderer>();
     musicRenderers.add(new GuitarRenderer(blurredBack));
     musicRenderers.add(new UIRenderer());
@@ -153,7 +155,8 @@ void setup() {
 }
 
 void draw() {
-    //musicRenderer.drawBackground();
+    demo.update(midibars);
+    
     renderBackground(musicRenderers);
 
     try
