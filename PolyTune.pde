@@ -1,4 +1,6 @@
-import java.awt.Color; //<>//
+import controlP5.*; //<>// //<>//
+
+import java.awt.Color;
 /*
 	Java implementation of realtime polyphonic pitch tracking & custom visualization techniques
  	Based on Corban Brook's spectrotune code : https://github.com/corbanbrook/spectrotune
@@ -10,11 +12,12 @@ import java.awt.Color; //<>//
  
  */
 
+import java.util.Vector;
 boolean runFullscreen = true;
 boolean blurredBack = true;
 boolean autoPeak = false;
 
-int song = 1;
+int song = 0;
 final static int NUTHSELL = 0;
 final static int KISKECE = 1;
 
@@ -52,6 +55,7 @@ AudioInput input;
 Sampler sampler;
 Window window;
 Smooth smoother;
+Vector<MusicRenderer> musicRenderers;
 
 FFT fft;
 
@@ -107,9 +111,9 @@ public static final int SLOPEDOWN = 5;
 
 ArrayList<GuitarBar> midibars; 
 
-boolean sketchFullScreen() {
-    return runFullscreen;
-}
+//boolean sketchFullScreen() {
+//    return runFullscreen;
+//}
 
 
 void setup() {
@@ -127,6 +131,10 @@ void setup() {
     initGui();
 
     midibars= new ArrayList<GuitarBar>();
+    
+    musicRenderers = new Vector<MusicRenderer>();
+    musicRenderers.add(new GuitarRenderer());
+    musicRenderers.add(new UIRenderer());
 
     blurShader = loadShader( "shaders/blur.glsl" );
     blurShader.set( "blurSize", 9 );
@@ -153,28 +161,12 @@ void setup() {
 }
 
 void draw() {
-    background(0);
-    if (blurredBack)
-    {
-        image(backSoft, 0, 0);
-        
-        
-        
-        backSharpAlpha = max(0, backSharpAlpha - numOns * 5);
-        pushStyle();
-        
-        backSharpAlpha = min(255, backSharpAlpha + 3);
-        tint(255, backSharpAlpha);
-        image(backSharp, 0, 0);
-        popStyle();
-        //println("backSharpAlpha " + backSharpAlpha);
-    } 
-    else 
-        image(back, 0, 0);
+    //musicRenderer.drawBackground();
+    renderBackground(musicRenderers);
 
     try
     {
-        sampler.draw();
+        sampler.draw(musicRenderers);
     }
     catch (Exception e)
     {
