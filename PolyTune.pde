@@ -17,9 +17,9 @@ boolean runFullscreen = true;
 boolean blurredBack = true;
 boolean autoPeak = false;
 
-int song = 0;
 final static int NUTHSELL = 0;
 final static int KISKECE = 1;
+int song = KISKECE;
 
 int numOns = 0;
 
