@@ -1,4 +1,16 @@
 class GuitarRenderer implements MusicRenderer {
+  PImage back, backSharp, backSoft;
+
+  GuitarRenderer(boolean blurredBack) {
+    if (blurredBack)
+    {
+        backSharp = loadImage("er4-sharp.jpg");
+        backSoft = loadImage("er4-soft.jpg");
+    } else { 
+        back = loadImage("er4.jpg");
+    }
+  }    
+
   void drawBackground() {
     background(0);
     if (blurredBack)

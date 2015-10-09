@@ -1,4 +1,4 @@
-import controlP5.*; //<>// //<>//
+import controlP5.*; //<>// //<>// //<>//
 
 import java.awt.Color;
 /*
@@ -28,7 +28,6 @@ PShader blurShader;
 PGraphics pgBars, pgBlurPass1, pgBlurPass2;
 final int MAX_BLUR_ITERATIONS = 3;
 boolean useBlur = false;
-PImage back, backSharp, backSoft;
 float backSharpAlpha = 255;
 
 import ddf.minim.*;
@@ -133,7 +132,7 @@ void setup() {
     midibars= new ArrayList<GuitarBar>();
     
     musicRenderers = new Vector<MusicRenderer>();
-    musicRenderers.add(new GuitarRenderer());
+    musicRenderers.add(new GuitarRenderer(blurredBack));
     musicRenderers.add(new UIRenderer());
 
     blurShader = loadShader( "shaders/blur.glsl" );
@@ -151,13 +150,6 @@ void setup() {
     float cameraZ = (height/2.0) / tan(fov/2.0);
     perspective(fov, float(width)/float(height), 
     cameraZ/10.0, cameraZ*10.0);
-
-    if (blurredBack)
-    {
-        backSharp = loadImage("er4-sharp.jpg");
-        backSoft = loadImage("er4-soft.jpg");
-    } else 
-        back = loadImage("er4.jpg");
 }
 
 void draw() {
