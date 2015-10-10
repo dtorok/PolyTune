@@ -7,10 +7,10 @@ void renderBackground(Vector<MusicRenderer> renderers) {
   }
 }
 
-void renderSamples(Vector<MusicRenderer> renderers) {
+void renderNotes(Vector<MusicRenderer> renderers, Note[] notes) {
   Iterator<MusicRenderer> i = renderers.iterator();
   while (i.hasNext()) {
-    i.next().drawSamples();
+    i.next().drawNotes(notes);
   }
 }
 

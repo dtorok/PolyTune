@@ -32,15 +32,11 @@ class GuitarRenderer implements MusicRenderer {
        image(back, 0, 0);
   }
   
-  void drawSamples() {
-
+  
+  
+  void drawNotes(Note[] notes) {
     boolean mesh = true;
     boolean thinMesh = false;
-
-    //if (showUI) {
-    //  renderUI();
-    //}
-
 
     // clean old 
     numOns = 0;

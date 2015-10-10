@@ -189,6 +189,6 @@ class Sampler implements AudioListener
   
   // draw routine needs to be synchronized otherwise it will run while buffers are being populated
   synchronized void draw(Vector<MusicRenderer> renderers) {
-    renderSamples(renderers);
+    renderNotes(renderers, notes[frameNumber]);
   }
 }

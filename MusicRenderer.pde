@@ -1,4 +1,4 @@
 interface MusicRenderer {
   void drawBackground();  
-  void drawSamples();
+  void drawNotes(Note[] notes);
 }

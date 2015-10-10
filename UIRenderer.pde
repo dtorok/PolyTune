@@ -3,7 +3,7 @@ class UIRenderer implements MusicRenderer {
     // we don't do anything here
   }
   
-  void drawSamples() {
+  void drawNotes(Note[] notes) {
     if (showUI) {
       renderWindowCurve();
       renderFFT();
