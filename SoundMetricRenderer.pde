@@ -1,13 +1,14 @@
 class SoundMetricRenderer implements MusicRenderer {
-  public static final int BARS = 0;
-  public static final int CIRCLES = 1;
+  public static final int GRAY_BARS = 0;
+  public static final int GRAY_CIRCLES = 1;
+  public static final int COLORED_BACKGROUND = 2;
   
   int style;
   
   // == init
   // ==  
   SoundMetricRenderer() {
-    init(BARS);
+    init(GRAY_BARS);
   }
 
   SoundMetricRenderer(int style) {
@@ -30,11 +31,14 @@ class SoundMetricRenderer implements MusicRenderer {
     int pitch = (int) maxPitch(notes);
     
     switch(style) {
-      case BARS: 
+      case GRAY_BARS: 
         drawBars(amplitude, num, pitch);
         break;
-      case CIRCLES: 
+      case GRAY_CIRCLES: 
         drawCircles(amplitude, num, pitch);
+        break;
+      case COLORED_BACKGROUND:
+        drawColoredBackground(amplitude, num, pitch);
         break;
     }
     
@@ -52,6 +56,10 @@ class SoundMetricRenderer implements MusicRenderer {
     drawCircle(2, pitchColor(pitch));
     drawCircle(1, numColor(num));
     drawCircle(0, amplitudeColor(amplitude));
+  }
+  
+  private void drawColoredBackground(int amplitude, int num, int pitch) {
+    background(amplitude, num, pitch);
   }
   
   // == metrics to colors
