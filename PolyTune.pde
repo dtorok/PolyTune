@@ -134,7 +134,8 @@ void setup() {
     demo = new Demo();
 
     musicRenderers = new Vector<MusicRenderer>();
-    musicRenderers.add(new GuitarRenderer(blurredBack));
+    //musicRenderers.add(new GuitarRenderer(blurredBack));
+    musicRenderers.add(new SoundMetricRenderer(SoundMetricRenderer.CIRCLES));
     musicRenderers.add(new UIRenderer());
 
     blurShader = loadShader( "shaders/blur.glsl" );
